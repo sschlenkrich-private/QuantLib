@@ -897,6 +897,7 @@
     <ClInclude Include="ql\experimental\templatemodels\vanillalocalvol\vanillalocalvolmodels.hpp" />
     <ClInclude Include="ql\experimental\templatemodels\vanillalocalvol\vanillalocalvolmodelT.hpp" />
     <ClInclude Include="ql\experimental\termstructures\all.hpp" />
+    <ClInclude Include="ql\experimental\termstructures\basisswapratehelpers.hpp" />
     <ClInclude Include="ql\experimental\termstructures\corrtermstructureStrike.hpp" />
     <ClInclude Include="ql\experimental\termstructures\crosscurrencyratehelpers.hpp" />
     <ClInclude Include="ql\experimental\termstructures\Helper\all.hpp" />
@@ -2209,7 +2210,6 @@
     <ClCompile Include="ql\experimental\swaptions\haganirregularswaptionengine.cpp" />
     <ClCompile Include="ql\experimental\swaptions\irregularswap.cpp" />
     <ClCompile Include="ql\experimental\swaptions\irregularswaption.cpp" />
-    <ClCompile Include="ql\experimental\termstructures\crosscurrencyratehelpers.cpp" />
     <ClCompile Include="ql\experimental\templatemodels\hullwhite\bondoptionengine.cpp" />
     <ClCompile Include="ql\experimental\templatemodels\hullwhite\fixedratebondoption.cpp" />
     <ClCompile Include="ql\experimental\templatemodels\hullwhite\hullwhitemodels.cpp" />
@@ -2229,7 +2229,9 @@
     <ClCompile Include="ql\experimental\templatemodels\qgaussian2\qglsvmodel.cpp" />
     <ClCompile Include="ql\experimental\templatemodels\stochvol\stochvolcalibrator.cpp" />
     <ClCompile Include="ql\experimental\termstructures\Helper\ParticleMethodUtils.cpp" />
+    <ClCompile Include="ql\experimental\termstructures\basisswapratehelpers.cpp" />
     <ClCompile Include="ql\experimental\termstructures\corrtermstructureStrike.cpp" />
+    <ClCompile Include="ql\experimental\termstructures\crosscurrencyratehelpers.cpp" />
     <ClCompile Include="ql\experimental\termstructures\localCorrFX\CTSlocalInCrossCorrelationFX.cpp" />
     <ClCompile Include="ql\experimental\termstructures\localCorrFX\CTSlocalInCrossCovarianceFX.cpp" />
     <ClCompile Include="ql\experimental\termstructures\localCorrFX\CTSlocalInCrossNegSkewFX.cpp" />

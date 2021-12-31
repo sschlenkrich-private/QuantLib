@@ -53,6 +53,7 @@
 #include "autocovariances.hpp"
 #include "barrieroption.hpp"
 #include "basismodels.hpp"
+#include "basisswapratehelpers.hpp"
 #include "basketoption.hpp"
 #include "batesmodel.hpp"
 #include "bermudanswaption.hpp"
@@ -382,6 +383,7 @@ test_suite* init_unit_test_suite(int, char* []) {
     test->add(CashFlowsTest::suite());
     test->add(CliquetOptionTest::suite());
     test->add(CmsTest::suite());
+    test->add(ConvertibleBondTest::suite());
     test->add(CovarianceTest::suite());
     test->add(CPISwapTest::suite());
     test->add(CreditDefaultSwapTest::suite());
@@ -486,6 +488,7 @@ test_suite* init_unit_test_suite(int, char* []) {
     test->add(AmortizingBondTest::suite());
     test->add(AsianOptionTest::experimental(speed));
     test->add(BasismodelsTest::suite());
+    test->add(BasisSwapRateHelpersTest::suite());
     test->add(BarrierOptionTest::experimental());
     test->add(DoubleBarrierOptionTest::experimental(speed));
     test->add(BlackDeltaCalculatorTest::suite());
@@ -498,7 +501,6 @@ test_suite* init_unit_test_suite(int, char* []) {
     test->add(CommodityUnitOfMeasureTest::suite());
     test->add(CompiledBoostVersionTest::suite());
     test->add(CompoundOptionTest::suite());
-    test->add(ConvertibleBondTest::suite());
     test->add(CreditRiskPlusTest::suite());
     test->add(DoubleBarrierOptionTest::suite(speed));
     test->add(DoubleBinaryOptionTest::suite());

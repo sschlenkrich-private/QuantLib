@@ -489,6 +489,9 @@
     <ClCompile Include="ultimateforwardtermstructure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="basisswapratehelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="crosscurrencyratehelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -987,6 +990,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ultimateforwardtermstructure.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="basisswapratehelpers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="crosscurrencyratehelpers.hpp">

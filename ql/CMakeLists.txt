@@ -248,13 +248,14 @@ set(QL_SOURCES
     experimental/templatemodels/qgaussian/qgaussiancalibrator.cpp
     experimental/templatemodels/stochvol/stochvolcalibrator.cpp
     experimental/termstructures/Helper/ParticleMethodUtils.cpp
+    experimental/termstructures/basisswapratehelpers.cpp
     experimental/termstructures/corrtermstructureStrike.cpp
+    experimental/termstructures/crosscurrencyratehelpers.cpp
     experimental/termstructures/localCorrFX/CTSlocalInCrossCorrelationFX.cpp
     experimental/termstructures/localCorrFX/CTSlocalInCrossCovarianceFX.cpp
     experimental/termstructures/localCorrFX/CTSlocalInCrossNegSkewFX.cpp
     experimental/termstructures/localCorrFX/CTSlocalInCrossVolatilityFX.cpp
     experimental/termstructures/localCorrFX/localcorrsurfaceabfFX.cpp
-    experimental/termstructures/crosscurrencyratehelpers.cpp
     experimental/termstructures/localcorrsurfaceabf.cpp
     experimental/termstructures/localcorrtermstructure.cpp
     experimental/vanillalocalvolmodel/vanillalocalvolmodel.cpp
@@ -1311,6 +1312,7 @@ set(QL_HEADERS
     experimental/templatemodels/vanillalocalvol/vanillalocalvolmodels.hpp
     experimental/termstructures/Helper/KernelInterface.hpp
     experimental/termstructures/Helper/ParticleMethodUtils.hpp
+    experimental/termstructures/basisswapratehelpers.hpp
     experimental/termstructures/corrtermstructureStrike.hpp
     experimental/termstructures/crosscurrencyratehelpers.hpp
     experimental/termstructures/localCorrFX/CTSlocalInCrossCorrelationFX.hpp
