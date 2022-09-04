@@ -4424,7 +4424,6 @@
     <ClInclude Include="ql\instruments\zerocouponswap.hpp">
       <Filter>instruments</Filter>
     </ClInclude>
-    <ClInclude Include="ql\pricingengines\bond\riskybondengine.hpp" />
     <ClInclude Include="ql\pricingengines\asian\turnbullwakemanasianengine.hpp">
       <Filter>pricingengines\asian</Filter>
     </ClInclude>
@@ -4743,6 +4742,9 @@
     </ClInclude>
     <ClInclude Include="ql\experimental\termstructures\localCorrFX\localcorrsurfaceabfFX.hpp">
       <Filter>experimental\termstructures</Filter>
+    </ClInclude>
+    <ClInclude Include="ql\pricingengines\bond\riskybondengine.hpp">
+      <Filter>pricingengines\bond</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7445,7 +7447,6 @@
     <ClCompile Include="ql\instruments\zerocouponswap.cpp">
       <Filter>instruments</Filter>
     </ClCompile>
-    <ClCompile Include="ql\pricingengines\bond\riskybondengine.cpp" />
     <ClCompile Include="ql\pricingengines\asian\turnbullwakemanasianengine.cpp">
       <Filter>pricingengines\asian</Filter>
     </ClCompile>
@@ -7567,6 +7568,9 @@
     </ClCompile>
     <ClCompile Include="ql\experimental\termstructures\localCorrFX\localcorrsurfaceabfFX.cpp">
       <Filter>experimental\termstructures</Filter>
+    </ClCompile>
+    <ClCompile Include="ql\pricingengines\bond\riskybondengine.cpp">
+      <Filter>pricingengines\bond</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
