@@ -98,7 +98,7 @@ namespace QuantLib {
         if (strike < blackTS_->minStrike()) strike = blackTS_->minStrike();
 
         y = std::log(strike/forwardValue);
-        dy = ((std::fabs(y) > 0.001) ? y*0.0001 : 0.0001); //change: 0.000001 due to errors non-convexity for close to atm
+        dy = ((std::fabs(y) > 0.001) ? Real(y*0.0001) : 0.000001);
         strikep=strike*std::exp(dy);
         strikem=strike/std::exp(dy);
         w  = blackTS_->blackVariance(t, strike,  true);

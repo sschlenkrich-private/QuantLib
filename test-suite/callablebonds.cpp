@@ -33,7 +33,7 @@
 #include <ql/time/schedule.hpp>
 #include <ql/termstructures/yield/flatforward.hpp>
 #include <ql/models/shortrate/onefactormodels/hullwhite.hpp>
-#include <boost/make_shared.hpp>
+#include <ql/shared_ptr.hpp>
 #include <iomanip>
 
 using namespace QuantLib;
@@ -133,7 +133,7 @@ void CallableBondTest::testInterplay() {
                                 vars.issueDate(), callabilities);
     bond.setPricingEngine(engine);
 
-    double expected = callabilities[0]->price().amount() *
+    Real expected = callabilities[0]->price().amount() *
                       vars.termStructure->discount(callabilities[0]->date()) /
                       vars.termStructure->discount(bond.settlementDate());
 
@@ -348,7 +348,7 @@ void CallableBondTest::testObservability() {
 
     bond.setPricingEngine(engine);
 
-    double originalValue = bond.NPV();
+    Real originalValue = bond.NPV();
 
     observable->setValue(0.04);
 
@@ -637,9 +637,9 @@ void CallableBondTest::testSnappingExerciseDate2ClosestCouponDate() {
     };
 
     auto initialCallDate = Date(14, Feb, 2022);
-    auto tolerance = 1e-10;
-    auto prevOAS = 0.0266;
-    auto expectedOasStep = 0.00005;
+    Real tolerance = 1e-10;
+    Real prevOAS = 0.0266;
+    Real expectedOasStep = 0.00005;
 
     ext::shared_ptr<CallableFixedRateBond> callableBond;
     ext::shared_ptr<FixedRateBond> fixedRateBond;

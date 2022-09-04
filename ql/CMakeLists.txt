@@ -697,6 +697,7 @@ set(QL_SOURCES
     pricingengines/asian/mc_discr_arith_av_strike.cpp
     pricingengines/asian/mc_discr_geom_av_price.cpp
     pricingengines/asian/mc_discr_geom_av_price_heston.cpp
+    pricingengines/asian/turnbullwakemanasianengine.cpp
     pricingengines/barrier/analyticbarrierengine.cpp
     pricingengines/barrier/analyticbinarybarrierengine.cpp
     pricingengines/barrier/discretizedbarrieroption.cpp
@@ -1958,6 +1959,7 @@ set(QL_HEADERS
     pricingengines/asian/mc_discr_geom_av_price.hpp
     pricingengines/asian/mc_discr_geom_av_price_heston.hpp
     pricingengines/asian/mcdiscreteasianenginebase.hpp
+    pricingengines/asian/turnbullwakemanasianengine.hpp
     pricingengines/barrier/analyticbarrierengine.hpp
     pricingengines/barrier/analyticbinarybarrierengine.hpp
     pricingengines/barrier/binomialbarrierengine.hpp
@@ -2271,6 +2273,8 @@ set(QL_HEADERS
     time/daycounters/actual360.hpp
     time/daycounters/actual364.hpp
     time/daycounters/actual365fixed.hpp
+    time/daycounters/actual366.hpp
+    time/daycounters/actual36525.hpp
     time/daycounters/actualactual.hpp
     time/daycounters/business252.hpp
     time/daycounters/one.hpp
@@ -2464,10 +2468,16 @@ target_compile_definitions(ql_library PRIVATE
 target_compile_options(ql_library PRIVATE
     ${OpenMP_CXX_FLAGS})
 
+if(NOT "${QL_EXTRA_LINK_LIBRARIES}" STREQUAL "")
+    target_link_libraries(ql_library PUBLIC ${QL_EXTRA_LINK_LIBRARIES})
+endif()
+
 target_include_directories(ql_library PUBLIC
     $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
-    $<INSTALL_INTERFACE:${QL_INSTALL_INCLUDEDIR}>
+    $<INSTALL_INTERFACE:${QL_INSTALL_INCLUDEDIR}>)
+
+target_include_directories(ql_library SYSTEM PUBLIC
     ${Boost_INCLUDE_DIRS}
     ${OpenMP_CXX_INCLUDE_DIRS})
 

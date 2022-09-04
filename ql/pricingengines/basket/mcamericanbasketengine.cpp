@@ -18,18 +18,18 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#include <ql/math/functional.hpp>
 #include <ql/methods/montecarlo/lsmbasissystem.hpp>
 #include <ql/pricingengines/basket/mcamericanbasketengine.hpp>
 #include <utility>
 
 namespace QuantLib {
 
-    AmericanBasketPathPricer::AmericanBasketPathPricer(Size assetNumber,
-                                                       ext::shared_ptr<Payoff> payoff,
-                                                       Size polynomialOrder,
-                                                       LsmBasisSystem::PolynomialType polynomialType)
-    : assetNumber_(assetNumber), payoff_(std::move(payoff)), scalingValue_(1.0),
+    AmericanBasketPathPricer::AmericanBasketPathPricer(
+        Size assetNumber,
+        ext::shared_ptr<Payoff> payoff,
+        Size polynomialOrder,
+        LsmBasisSystem::PolynomialType polynomialType)
+    : assetNumber_(assetNumber), payoff_(std::move(payoff)),
       v_(LsmBasisSystem::multiPathBasisSystem(assetNumber_, polynomialOrder, polynomialType)) {
         QL_REQUIRE(   polynomialType == LsmBasisSystem::Monomial
                    || polynomialType == LsmBasisSystem::Laguerre

@@ -43,16 +43,7 @@
 #include <boost/math/bindings/rr.hpp>
 #endif
 
-#if defined(__GNUC__) &&                                                       \
-    (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 8)) || (__GNUC__ > 4))
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
-#endif
 #include <boost/math/special_functions/erf.hpp>
-#if defined(__GNUC__) &&                                                       \
-    (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 8)) || (__GNUC__ > 4))
-#pragma GCC diagnostic pop
-#endif
 
 #include <unordered_map>
 
@@ -150,8 +141,7 @@ class Gaussian1dModel : public TermStructureConsistentModel, public LazyObject {
        consisting of
         2*gridPoints+1 points */
 
-    Disposable<Array>
-    yGrid(Real yStdDevs, int gridPoints, Real T = 1.0, Real t = 0, Real y = 0) const;
+    Array yGrid(Real yStdDevs, int gridPoints, Real T = 1.0, Real t = 0, Real y = 0) const;
 
   private:
     // It is of great importance for performance reasons to cache underlying
@@ -188,8 +178,6 @@ class Gaussian1dModel : public TermStructureConsistentModel, public LazyObject {
         : TermStructureConsistentModel(yieldTermStructure) {
         registerWith(Settings::instance().evaluationDate());
     }
-
-    ~Gaussian1dModel() override = default;
 
     virtual Real numeraireImpl(Time t, Real y, const Handle<YieldTermStructure>& yts) const = 0;
 
