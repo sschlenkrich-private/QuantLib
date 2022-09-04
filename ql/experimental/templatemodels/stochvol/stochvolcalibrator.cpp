@@ -103,7 +103,7 @@ namespace QuantLib {
             return ext::shared_ptr<RealStochVolModel>(new RealStochVolModel(lambda,b,L,theta,m,eta,z0,rho));
         }
 
-        Disposable<Array> StochVolModelCalibrator::values(const Array& x) const {
+        Array StochVolModelCalibrator::values(const Array& x) const {
             ext::shared_ptr<RealStochVolModel> m = model(direct(x));
             std::vector<Real>          fwPrices(strikes_.size());
             std::vector<Option::Type>  callOrPut(strikes_.size());
@@ -119,7 +119,7 @@ namespace QuantLib {
         }
 
         Real StochVolModelCalibrator::value(const Array& x) const {
-            Disposable<Array> y = values(x);
+            Array y = values(x);
             Real res=0.0;
             for (size_t k=0; k<y.size(); ++k) res += y[k]*y[k];
             return res/2.0;

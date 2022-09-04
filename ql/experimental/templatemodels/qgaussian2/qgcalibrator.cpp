@@ -154,7 +154,7 @@ namespace QuantLib {
         model_->update(m_sigma,m_slope,m_eta);
     }
 
-    Disposable<Array> QGCalibrator::Objective::values(const Array& x) const {
+    Array QGCalibrator::Objective::values(const Array& x) const {
         update(x);
         // we may have a swaption model for each swaption
         std::vector< std::vector< ext::shared_ptr<QGAverageSwaprateModel> > > swaprateModels;

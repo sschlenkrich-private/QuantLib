@@ -143,7 +143,7 @@ namespace QuantLib {
         model_->update(m_lambda,m_b,m_eta);
     }
 
-    Disposable<Array> QuasiGaussianModelCalibrator::Objective::values(const Array& x) const {
+    Array QuasiGaussianModelCalibrator::Objective::values(const Array& x) const {
         update(x);
         // we may have a swaption model for each swaption
         std::vector< std::vector< ext::shared_ptr<RealQGSwaptionModel> > > swaptionModels;

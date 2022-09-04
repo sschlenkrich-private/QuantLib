@@ -77,7 +77,7 @@ namespace QuantLib {
         // initialize state X with model parameters and apply inverse transformation
         Array initialise();
         // CostFunction interface
-        virtual Disposable<Array> values(const Array& x) const;
+        virtual Array values(const Array& x) const;
         virtual Real value(const Array& x) const;
 
         // inspectors

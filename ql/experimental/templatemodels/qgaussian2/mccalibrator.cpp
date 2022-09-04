@@ -206,7 +206,7 @@ namespace QuantLib {
         calibrator_->model_->update(m_sigma,m_slope, m_curve);  // Note: we work directly on the calibrator model
     }
 
-    Disposable<Array> QGMonteCarloCalibrator::Objective::values(const Array& x) const {
+    Array QGMonteCarloCalibrator::Objective::values(const Array& x) const {
         update(x);  // first we update the model with the new state
         for (size_t k = firstSimulationIdx_; k <= lastSimulationIdx_; ++k)  // then we simulate the model again... this is expensive!
             calibrator_->mcSimulation_->simulate(k,true);  // we clear additional states since we need to allow interpolation due to good fixing dates

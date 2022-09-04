@@ -153,7 +153,7 @@ namespace QuantLib {
                 //  model->update(sigma,slope,curve)
 
             // CostFunction interface
-            virtual Disposable<Array> values(const Array& x) const;
+            virtual Array values(const Array& x) const;
                 // update(x)
                 // allocate Y with outputSize()
                 // for k=0..swaptions_.size() construct QGSwaprateModel swpModel[k]

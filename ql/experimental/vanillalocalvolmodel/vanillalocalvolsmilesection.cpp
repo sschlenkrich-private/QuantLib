@@ -76,7 +76,7 @@ namespace QuantLib {
             }
 
             virtual Real value(const Array& x) const {
-                Disposable<Array> y = values(x);
+                Array y = values(x);
                 Real res = 0.0;
                 for (Size k = 0; k<y.size(); ++k) res += y[k] * y[k];
                 return res / 2.0;
@@ -104,7 +104,7 @@ namespace QuantLib {
                         model_->onlyForwardCalibrationIters(), model_->adjustATMFlag(), model_->enableLogging(), model_->useInitialMu(), model_->initialMu()));
             }
 
-            virtual Disposable<Array> values(const Array& x) const {
+            virtual Array values(const Array& x) const {
                 ext::shared_ptr<VanillaLocalVolModel> newModel = model(x);
                 Size sizeF = relativeStrikes_.size() - 1; // ATM is already calibrated on-the-fly
                 if (alpha_ > 0.0) sizeF += relativeStrikes_.size() - 3;  // we may want to minimize curvature, but exclude skew/convexity around ATM
@@ -129,7 +129,7 @@ namespace QuantLib {
                 return objectiveF;
             }
 
-            Disposable<Array> initialValues() const { // we use zero slope as initial guess
+            Array initialValues() const { // we use zero slope as initial guess
                 Array initialValue(relativeStrikes_.size() - 1, inverseTransform<Real>(0.0, minSlope_, maxSlope_));
                 return initialValue;
             }
