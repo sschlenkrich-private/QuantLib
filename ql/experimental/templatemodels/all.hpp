@@ -13,4 +13,3 @@
 #include <ql/experimental/templatemodels/qgaussian2/all.hpp>
 #include <ql/experimental/templatemodels/stochvol/all.hpp>
 #include <ql/experimental/templatemodels/vanillalocalvol/all.hpp>
-
