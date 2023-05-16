@@ -13,7 +13,7 @@
 
 #include <ql/experimental/templatemodels/multiasset/multiassetslvmodel.hpp>
 #include <ql/experimental/termstructures/localcorrtermstructure.hpp>
-#include <ql/experimental/processes/hestonslvprocess.hpp>
+#include <ql/processes/hestonslvprocess.hpp>
 
 namespace QuantLib {
 

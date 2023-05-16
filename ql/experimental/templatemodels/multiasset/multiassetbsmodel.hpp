@@ -10,6 +10,7 @@
 #ifndef quantlib_multiassetbsmodel_hpp
 #define quantlib_multiassetbsmodel_hpp
 
+#include <map>
 
 #include <ql/experimental/templatemodels/stochasticprocessT.hpp>
 

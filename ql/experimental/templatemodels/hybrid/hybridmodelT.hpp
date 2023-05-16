@@ -14,6 +14,8 @@
 #ifndef quantlib_templatehybridmodel_hpp
 #define quantlib_templatehybridmodel_hpp
 
+#include <map>
+
 #include <ql/errors.hpp>
 
 #include <ql/experimental/templatemodels/stochasticprocessT.hpp>

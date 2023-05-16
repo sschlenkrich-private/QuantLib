@@ -10,10 +10,11 @@
 #ifndef quantlib_multiassetslvmodel_hpp
 #define quantlib_multiassetslvmodel_hpp
 
+#include <map>
 
 #include <ql/experimental/templatemodels/stochasticprocessT.hpp>
 
-#include <ql/experimental/processes/hestonslvprocess.hpp>
+#include <ql/processes/hestonslvprocess.hpp>
 
 namespace QuantLib {
 

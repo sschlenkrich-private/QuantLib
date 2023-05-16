@@ -27,7 +27,7 @@
 #include <ql/experimental/termstructures/corrtermstructureStrike.hpp>
 #include <ql/patterns/visitor.hpp>
 #include <ql/experimental/templatemodels/stochasticprocessT.hpp>
-#include <ql/experimental/processes/hestonslvprocess.hpp>
+#include <ql/processes/hestonslvprocess.hpp>
 #include <ql/processes/blackscholesprocess.hpp>
 
 namespace QuantLib {
