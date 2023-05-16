@@ -90,9 +90,11 @@ QuantLib is
     Copyright (C) 2010 Manas Bhatt
     Copyright (C) 2010 Michael Heckl
     Copyright (C) 2010 Robert Philipp
+    Copyright (C) 2010 Sebastian Schlenkrch
     Copyright (C) 2010 Slava Mazur
     Copyright (C) 2010 SunTrust Bank
-    Copyright (C) 2010, 2011, 2012, 2013, 2023 Andre Miemiec
+    Copyright (C) 2010, 2011, 2012, 2013, 2016, 2023 Andre Miemiec
+    Copyright (C) 2010, 2012, 2014, 2015, 2016, 2017, 2018, 2019, 2020 Sebastian Schlenkrich
     Copyright (C) 2010, 2014 Cavit Hafizoglu
 
     Copyright (C) 2011, 2013, 2014 Fabien Le Floc'h
@@ -133,6 +135,7 @@ QuantLib is
     Copyright (C) 2017 Joseph Jeisman
     Copyright (C) 2017 Paul Giltinan
     Copyright (C) 2017 Werner Kuerzinger
+    Copyright (C) 2017, 2019 Cord Harms
     Copyright (C) 2017, 2022 Oleg Kulkov
 
     Copyright (C) 2018 Alexey Indiryakov
@@ -140,7 +143,6 @@ QuantLib is
     Copyright (C) 2018 Matthias Groncki
     Copyright (C) 2018 Matthias Lungwitz
     Copyright (C) 2018 Roy Zywina
-    Copyright (C) 2018 Sebastian Schlenkrich
     Copyright (C) 2018 Tom Anderson
 
     Copyright (C) 2019 Aprexo Limited
