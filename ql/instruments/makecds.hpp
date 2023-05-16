@@ -26,7 +26,7 @@
 #define quantlib_makecds_hpp
 
 #include <ql/instruments/creditdefaultswap.hpp>
-#include <boost/optional.hpp>
+#include <ql/optional.hpp>
 
 namespace QuantLib {
 
@@ -53,11 +53,13 @@ namespace QuantLib {
 
         MakeCreditDefaultSwap& withPricingEngine(const ext::shared_ptr<PricingEngine>&);
 
+        MakeCreditDefaultSwap& withTradeDate(const Date& tradeDate);
+
       private:
         Protection::Side side_;
         Real nominal_;
-        boost::optional<Period> tenor_;
-        boost::optional<Date> termDate_;
+        ext::optional<Period> tenor_;
+        ext::optional<Date> termDate_;
         Period couponTenor_;
         Real couponRate_;
         Real upfrontRate_;
@@ -65,6 +67,7 @@ namespace QuantLib {
         DayCounter lastPeriodDayCounter_;
         DateGeneration::Rule rule_;
         Natural cashSettlementDays_;
+        Date tradeDate_;
 
         ext::shared_ptr<PricingEngine> engine_;
     };

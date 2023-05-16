@@ -38,14 +38,6 @@
 using namespace std;
 using namespace QuantLib;
 
-#if defined(QL_ENABLE_SESSIONS)
-namespace QuantLib {
-
-    ThreadKey sessionId() { return {}; }
-
-}
-#endif
-
 int main(int, char* []) {
 
     try {
@@ -199,9 +191,9 @@ int main(int, char* []) {
 
             Rate fraStrikeRate = threeMonthFraQuote[monthsToStart[i]];
 
-            ForwardRateAgreement myFRA(fraValueDate,
+            ForwardRateAgreement myFRA(euribor3m, fraValueDate,
                                        fraFwdType,fraStrikeRate,
-                                       fraNotional, euribor3m);
+                                       fraNotional);
 
             cout << "3m Term FRA, Months to Start: "
                  << monthsToStart[i]
@@ -258,9 +250,9 @@ int main(int, char* []) {
             Rate fraStrikeRate =
                 threeMonthFraQuote[monthsToStart[i]] - BpsShift;
 
-            ForwardRateAgreement myFRA(fraValueDate,
+            ForwardRateAgreement myFRA(euribor3m, fraValueDate,
                                        fraFwdType, fraStrikeRate,
-                                       fraNotional, euribor3m);
+                                       fraNotional);
 
             cout << "3m Term FRA, 100 notional, Months to Start = "
                  << monthsToStart[i]

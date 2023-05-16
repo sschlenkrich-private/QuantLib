@@ -27,21 +27,10 @@
 #include <ql/cashflows/iborcoupon.hpp>
 #include <ql/indexes/interestrateindex.hpp>
 #include <ql/termstructures/yieldtermstructure.hpp>
+#include <ql/optional.hpp>
 #include <utility>
 
 namespace QuantLib {
-
-    void IborCoupon::createAtParCoupons() {
-        Settings::instance().createAtParCoupons();
-    }
-
-    void IborCoupon::createIndexedCoupons() {
-        Settings::instance().createIndexedCoupons();
-    }
-
-    bool IborCoupon::usingAtParCoupons() {
-        return Settings::instance().usingAtParCoupons();
-    }
 
     IborCoupon::IborCoupon(const Date& paymentDate,
                            Real nominal,
@@ -267,7 +256,7 @@ namespace QuantLib {
         return *this;
 	}
 
-    IborLeg& IborLeg::withIndexedCoupons(boost::optional<bool> b) {
+    IborLeg& IborLeg::withIndexedCoupons(ext::optional<bool> b) {
         useIndexedCoupons_ = b;
         return *this;
     }

@@ -41,6 +41,20 @@ class AmericanOptionTest {
     static void testLargeDividendShoutNPV();
     static void testEscrowedVsSpotAmericanOption();
     static void testTodayIsDividendDate();
+    static void testCallPutParity();
+    static void testQdPlusBoundaryValues();
+    static void testQdPlusBoundaryConvergence();
+    static void testQdAmericanEngines();
+    static void testQdFpIterationScheme();
+    static void testAndersenLakeHighPrecisionExample();
+    static void testQdEngineStandardExample();
+    static void testBulkQdFpAmericanEngine();
+    static void testQdEngineWithLobattoIntegral();
+    static void testQdNegativeDividendYield();
+    static void testBjerksundStenslandEuropeanGreeks();
+    static void testBjerksundStenslandAmericanGreeks();
+    static void testSingleBjerksundStenslandGreeks();
+
     static boost::unit_test_framework::test_suite* suite(SpeedLevel);
 };
 

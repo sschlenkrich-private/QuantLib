@@ -30,6 +30,7 @@ set(QL_TEST_SOURCES
     chooseroption.cpp
     cliquetoption.cpp
     cms.cpp
+    cms_normal.cpp
     cmsspread.cpp
     commodityunitofmeasure.cpp
     compiledboostversion.cpp
@@ -50,6 +51,9 @@ set(QL_TEST_SOURCES
     dividendoption.cpp
     doublebarrieroption.cpp
     doublebinaryoption.cpp
+    equitycashflow.cpp
+    equityindex.cpp
+    equitytotalreturnswap.cpp
     europeanoption.cpp
     everestoption.cpp
     exchangerate.cpp
@@ -81,7 +85,6 @@ set(QL_TEST_SOURCES
     inflationcpicapfloor.cpp
     inflationcpiswap.cpp
     inflationvolatility.cpp
-	inflationzciisinterpolation.cpp
     instruments.cpp
     integrals.cpp
     interestrates.cpp
@@ -200,6 +203,7 @@ set(QL_TEST_HEADERS
     chooseroption.hpp
     cliquetoption.hpp
     cms.hpp
+    cms_normal.hpp
     cmsspread.hpp
     commodityunitofmeasure.hpp
     compiledboostversion.hpp
@@ -220,6 +224,9 @@ set(QL_TEST_HEADERS
     dividendoption.hpp
     doublebarrieroption.hpp
     doublebinaryoption.hpp
+    equityindex.hpp
+    equitycashflow.hpp
+    equitytotalreturnswap.hpp
     europeanoption.hpp
     everestoption.hpp
     exchangerate.hpp
@@ -251,7 +258,6 @@ set(QL_TEST_HEADERS
     inflationcpicapfloor.hpp
     inflationcpiswap.hpp
     inflationvolatility.hpp
-	inflationzciisinterpolation.hpp
     instruments.hpp
     integrals.hpp
     interestrates.hpp
@@ -389,6 +395,10 @@ if (QL_BUILD_TEST_SUITE)
         ql_library
         ql_unit_test_main
         ${QL_THREAD_LIBRARIES})
+    if(MSVC AND CMAKE_UNITY_BUILD)
+        # for Unity builds, we need to add /bigobj
+        target_compile_options(ql_test_suite PRIVATE "/bigobj")
+    endif()
     if (QL_INSTALL_TEST_SUITE)
         install(TARGETS ql_test_suite RUNTIME DESTINATION ${QL_INSTALL_BINDIR})
     endif()
@@ -405,6 +415,10 @@ IF (QL_BUILD_BENCHMARK)
         ql_library
         ql_unit_test_main
         ${QL_THREAD_LIBRARIES})
+    if(MSVC AND CMAKE_UNITY_BUILD)
+        # for Unity builds, we need to add /bigobj
+        target_compile_options(ql_benchmark PRIVATE "/bigobj")
+    endif()
     if (QL_INSTALL_BENCHMARK)
         install(TARGETS ql_benchmark RUNTIME DESTINATION ${QL_INSTALL_BINDIR})
     endif()

@@ -47,20 +47,20 @@ namespace QuantLib {
         //@{
         DefaultProbabilityTermStructure(
             const DayCounter& dc = DayCounter(),
-            std::vector<Handle<Quote> > jumps = std::vector<Handle<Quote> >(),
-            const std::vector<Date>& jumpDates = std::vector<Date>());
+            std::vector<Handle<Quote> > jumps = {},
+            const std::vector<Date>& jumpDates = {});
         DefaultProbabilityTermStructure(
             const Date& referenceDate,
             const Calendar& cal = Calendar(),
             const DayCounter& dc = DayCounter(),
-            std::vector<Handle<Quote> > jumps = std::vector<Handle<Quote> >(),
-            const std::vector<Date>& jumpDates = std::vector<Date>());
+            std::vector<Handle<Quote> > jumps = {},
+            const std::vector<Date>& jumpDates = {});
         DefaultProbabilityTermStructure(
             Natural settlementDays,
             const Calendar& cal,
             const DayCounter& dc = DayCounter(),
-            std::vector<Handle<Quote> > jumps = std::vector<Handle<Quote> >(),
-            const std::vector<Date>& jumpDates = std::vector<Date>());
+            std::vector<Handle<Quote> > jumps = {},
+            const std::vector<Date>& jumpDates = {});
         //@}
 
         /*! \name Survival probabilities
@@ -219,7 +219,7 @@ namespace QuantLib {
    inline
     Rate DefaultProbabilityTermStructure::hazardRateImpl(Time t) const {
         Probability S = survivalProbability(t, true);
-        return S == 0.0 ? 0.0 : defaultDensity(t, true)/S;
+        return S == 0.0 ? Rate(0.0) : defaultDensity(t, true)/S;
     }
 
     inline Rate DefaultProbabilityTermStructure::hazardRate(Time t,

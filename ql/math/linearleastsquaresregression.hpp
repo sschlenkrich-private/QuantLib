@@ -29,6 +29,7 @@
 
 #include <ql/math/generallinearleastsquares.hpp>
 #include <ql/functional.hpp>
+#include <type_traits>
 
 namespace QuantLib {
 
@@ -37,7 +38,16 @@ namespace QuantLib {
         template <class Container>
         class LinearFct {
           public:
+            /*! \deprecated Use `auto` or `decltype` instead.
+                            Deprecated in version 1.29.
+            */
+            QL_DEPRECATED
             typedef Container argument_type;
+
+            /*! \deprecated Use `auto` or `decltype` instead.
+                            Deprecated in version 1.29.
+            */
+            QL_DEPRECATED
             typedef Real result_type;
             explicit LinearFct(Size i) : i_(i) {}
 
@@ -107,7 +117,7 @@ namespace QuantLib {
                                            const yContainer& y, Real intercept) 
     : GeneralLinearLeastSquares(x, y,
           details::LinearFcts<xContainer, 
-              boost::is_arithmetic<typename xContainer::value_type>::value>
+              std::is_arithmetic<typename xContainer::value_type>::value>
                                                         (x, intercept).fcts()) {
     }
 

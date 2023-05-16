@@ -263,7 +263,7 @@ void DistributionTest::testNormal() {
 
     MaddockInverseCumulativeNormal mInvCum(average, sigma);
     std::transform(x.begin(), x.end(), diff.begin(),
-                   [&](Real x) {
+                   [&](Real x) -> Real {
                        return x - mInvCum(cum(x));
                    });
 
@@ -753,7 +753,7 @@ test_suite* DistributionTest::suite(SpeedLevel speed) {
     suite->add(QUANTLIB_TEST_CASE(&DistributionTest::testInvCDFviaStochasticCollocation));
     suite->add(QUANTLIB_TEST_CASE(&DistributionTest::testSankaranApproximation));
 
-    if (speed == Slow) {
+    if (speed <= Fast) {
         suite->add(QUANTLIB_TEST_CASE(&DistributionTest::testBivariateCumulativeStudentVsBivariate));
     }
 

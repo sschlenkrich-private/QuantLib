@@ -27,6 +27,7 @@
 
 #include <ql/termstructures/yield/ratehelpers.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
+#include <ql/optional.hpp>
 
 namespace QuantLib {
 
@@ -38,7 +39,7 @@ namespace QuantLib {
                       const Handle<Quote>& fixedRate,
                       ext::shared_ptr<OvernightIndex> overnightIndex,
                       // exogenous discounting curve
-                      Handle<YieldTermStructure> discountingCurve = Handle<YieldTermStructure>(),
+                      Handle<YieldTermStructure> discountingCurve = {},
                       bool telescopicValueDates = false,
                       Natural paymentLag = 0,
                       BusinessDayConvention paymentConvention = Following,
@@ -47,8 +48,9 @@ namespace QuantLib {
                       const Period& forwardStart = 0 * Days,
                       Spread overnightSpread = 0.0,
                       Pillar::Choice pillar = Pillar::LastRelevantDate,
-                      Date customPillarDate = Date(), 
-                      RateAveraging::Type averagingMethod = RateAveraging::Compound);
+                      Date customPillarDate = Date(),
+                      RateAveraging::Type averagingMethod = RateAveraging::Compound,
+                      ext::optional<bool> endOfMonth = ext::nullopt);
         //! \name RateHelper interface
         //@{
         Real impliedQuote() const override;
@@ -84,6 +86,7 @@ namespace QuantLib {
       Period forwardStart_;
       Spread overnightSpread_;
       RateAveraging::Type averagingMethod_;
+      ext::optional<bool> endOfMonth_;
     };
 
     //! Rate helper for bootstrapping over Overnight Indexed Swap rates
@@ -95,7 +98,7 @@ namespace QuantLib {
             const Handle<Quote>& fixedRate,
             const ext::shared_ptr<OvernightIndex>& overnightIndex,
             // exogenous discounting curve
-            Handle<YieldTermStructure> discountingCurve = Handle<YieldTermStructure>(),
+            Handle<YieldTermStructure> discountingCurve = {},
             bool telescopicValueDates = false,
             RateAveraging::Type averagingMethod = RateAveraging::Compound);
         //! \name RateHelper interface

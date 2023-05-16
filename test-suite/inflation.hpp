@@ -30,12 +30,16 @@ public:
     static void testPeriod();
     static void testZeroIndex();
     static void testZeroTermStructure();
+    static void testSeasonalityCorrection();
     static void testZeroIndexFutureFixing();
     static void testInterpolatedZeroTermStructure();
-    static void testYYIndex();
+    static void testQuotedYYIndex();
+    static void testRatioYYIndex();
+    static void testOldRatioYYIndex();
     static void testYYTermStructure();
     static void testCpiFlatInterpolation();
-    static void testCpiInterpolation();
+    static void testCpiLinearInterpolation();
+    static void testCpiAsIndexInterpolation();
     static boost::unit_test_framework::test_suite* suite();
 };
 

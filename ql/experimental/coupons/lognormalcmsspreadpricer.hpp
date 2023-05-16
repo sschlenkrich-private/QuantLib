@@ -31,6 +31,7 @@
 #include <ql/experimental/coupons/swapspreadindex.hpp>
 #include <ql/math/integrals/gaussianquadratures.hpp>
 #include <ql/math/distributions/normaldistribution.hpp>
+#include <ql/optional.hpp>
 
 namespace QuantLib {
 
@@ -64,7 +65,7 @@ namespace QuantLib {
             const Handle<Quote>& correlation,
             Handle<YieldTermStructure> couponDiscountCurve = Handle<YieldTermStructure>(),
             Size IntegrationPoints = 16,
-            const boost::optional<VolatilityType>& volatilityType = boost::none,
+            const ext::optional<VolatilityType>& volatilityType = ext::nullopt,
             Real shift1 = Null<Real>(),
             Real shift2 = Null<Real>());
 
@@ -84,7 +85,6 @@ namespace QuantLib {
         Real integrand_normal(Real) const;
 
         class integrand_f;
-        friend class integrand_f;
 
         ext::shared_ptr<CmsCouponPricer> cmsPricer_;
 

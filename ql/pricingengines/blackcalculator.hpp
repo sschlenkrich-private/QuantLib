@@ -37,7 +37,6 @@ namespace QuantLib {
     class BlackCalculator {
       private:
         class Calculator;
-        friend class Calculator;
       public:
         BlackCalculator(const ext::shared_ptr<StrikedTypePayoff>& payoff,
                         Real forward,
@@ -102,6 +101,9 @@ namespace QuantLib {
 
         /*! Sensitivity to strike. */
         Real strikeSensitivity() const;
+
+        /*! gamma w.r.t. strike. */
+        Real strikeGamma() const;
 
         Real alpha() const;
         Real beta() const;

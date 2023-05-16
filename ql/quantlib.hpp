@@ -7,6 +7,7 @@
 #  include <ql/auto_link.hpp>
 #endif
 
+#include <ql/any.hpp>
 #include <ql/buildinfo.hpp>
 #include <ql/cashflow.hpp>
 #include <ql/compounding.hpp>
@@ -26,6 +27,7 @@
 #include <ql/money.hpp>
 #include <ql/numericalmethod.hpp>
 #include <ql/option.hpp>
+#include <ql/optional.hpp>
 #include <ql/payoff.hpp>
 #include <ql/position.hpp>
 #include <ql/prices.hpp>

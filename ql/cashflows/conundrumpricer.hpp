@@ -1,6 +1,8 @@
 /*
  Copyright (C) 2006 Giorgio Facchinetti
  Copyright (C) 2006 Mario Pucci
+ Copyright (C) 2023 Andre Miemiec
+
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -40,9 +42,9 @@ namespace QuantLib {
                                 Real deflator) const = 0;
     };
 
-    class BlackVanillaOptionPricer : public VanillaOptionPricer {
+    class MarketQuotedOptionPricer : public VanillaOptionPricer {
       public:
-        BlackVanillaOptionPricer(
+        MarketQuotedOptionPricer(
                 Rate forwardValue,
                 Date expiryDate,
                 const Period& swapTenor,
@@ -58,6 +60,12 @@ namespace QuantLib {
         ext::shared_ptr<SwaptionVolatilityStructure> volatilityStructure_;
         ext::shared_ptr<SmileSection> smile_;
     };
+
+    /*! \deprecated Renamed to MarketQuotedOptionPricer.
+         Deprecated in version 1.31.
+    */
+    [[deprecated("Renamed to MarketQuotedOptionPricer")]]
+    typedef MarketQuotedOptionPricer BlackVanillaOptionPricer;
 
     class GFunction {
       public:
@@ -152,8 +160,6 @@ namespace QuantLib {
             Real der2Rs_derX2(Real x);
             Real der2Z_derX2(Real x);
 
-            class ObjectiveFunction;
-            friend class ObjectiveFunction;
             class ObjectiveFunction {
                 const GFunctionWithShifts& o_;
                 Real Rs_;
@@ -273,12 +279,22 @@ namespace QuantLib {
             Real hardUpperLimit = QL_MAX_REAL);
 
         Real upperLimit() const { return upperLimit_; }
+        Real lowerLimit() const { return lowerLimit_; }
         Real stdDeviations() const { return stdDeviationsForUpperLimit_; }
 
         // private:
         class Function {
           public:
+            /*! \deprecated Use `auto` or `decltype` instead.
+                            Deprecated in version 1.29.
+            */
+            QL_DEPRECATED
             typedef Real argument_type;
+
+            /*! \deprecated Use `auto` or `decltype` instead.
+                            Deprecated in version 1.29.
+            */
+            QL_DEPRECATED
             typedef Real result_type;
             virtual ~Function() = default;
             virtual Real operator()(Real x) const = 0;
@@ -322,10 +338,11 @@ namespace QuantLib {
         Real optionletPrice(Option::Type optionType, Rate strike) const override;
         Real swapletPrice() const override;
         Real resetUpperLimit(Real stdDeviationsForUpperLimit) const;
+        Real resetLowerLimit(Real stdDeviationsForLowerLimit) const;
         Real refineIntegration(Real integralValue, const ConundrumIntegrand& integrand) const;
 
-        mutable Real upperLimit_, stdDeviationsForUpperLimit_;
-        const Real lowerLimit_, requiredStdDeviations_ = 8, precision_,
+        mutable Real lowerLimit_, stdDeviationsForLowerLimit_, upperLimit_, stdDeviationsForUpperLimit_;
+        const Real  requiredStdDeviations_ = 8, precision_,
                                 refiningIntegrationTolerance_ = .0001;
         const Real hardUpperLimit_;
     };

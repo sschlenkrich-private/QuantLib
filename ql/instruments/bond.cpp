@@ -7,6 +7,7 @@
  Copyright (C) 2007, 2008, 2009 Ferdinando Ametrano
  Copyright (C) 2007 Chiara Fornarola
  Copyright (C) 2008 Simon Ibbotson
+ Copyright (C) 2022 Oleg Kulkov
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -354,9 +355,9 @@ namespace QuantLib {
 
     void Bond::deepUpdate() {
         for (auto& cashflow : cashflows_) {
-            ext::shared_ptr<LazyObject> f = ext::dynamic_pointer_cast<LazyObject>(cashflow);
-            if (f != nullptr)
-                f->update();
+            if(auto lazy = ext::dynamic_pointer_cast<LazyObject>(cashflow)) {
+                lazy->deepUpdate();
+            }
         }
         update();
     }
@@ -379,8 +380,6 @@ namespace QuantLib {
                 lastPaymentDate = coupon->date();
             } else if (!close(notional, notionals_.back())) {
                 // ...or if it has changed.
-                QL_REQUIRE(notional < notionals_.back(),
-                           "increasing coupon notionals");
                 notionals_.push_back(coupon->nominal());
                 // in this case, we also add the last valid date for
                 // the previous one...

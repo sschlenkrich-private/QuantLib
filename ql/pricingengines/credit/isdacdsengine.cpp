@@ -28,6 +28,7 @@
 #include <ql/termstructures/yield/piecewiseyieldcurve.hpp>
 #include <ql/time/calendars/weekendsonly.hpp>
 #include <ql/time/daycounters/actual360.hpp>
+#include <ql/optional.hpp>
 #include <utility>
 
 namespace QuantLib {
@@ -35,7 +36,7 @@ namespace QuantLib {
     IsdaCdsEngine::IsdaCdsEngine(Handle<DefaultProbabilityTermStructure> probability,
                                  Real recoveryRate,
                                  Handle<YieldTermStructure> discountCurve,
-                                 const boost::optional<bool>& includeSettlementDateFlows,
+                                 const ext::optional<bool>& includeSettlementDateFlows,
                                  const NumericalFix numericalFix,
                                  const AccrualBias accrualBias,
                                  const ForwardsInCouponPeriod forwardsInCouponPeriod)
@@ -307,14 +308,19 @@ namespace QuantLib {
                 arguments_.accrualRebate->amount();
         }
 
-        Real upfrontSign = Protection::Seller != 0U ? 1.0 : -1.0;
-
-        if (arguments_.side == Protection::Seller) {
+        Real upfrontSign = 1.0;
+        switch (arguments_.side) {
+          case Protection::Seller:
             results_.defaultLegNPV *= -1.0;
             results_.accrualRebateNPV *= -1.0;
-        } else {
+            break;
+          case Protection::Buyer:
             results_.couponLegNPV *= -1.0;
-            results_.upfrontNPV *= -1.0;
+            results_.upfrontNPV   *= -1.0;
+            upfrontSign = -1.0;
+            break;
+          default:
+            QL_FAIL("unknown protection side");
         }
 
         results_.value = results_.defaultLegNPV + results_.couponLegNPV +
