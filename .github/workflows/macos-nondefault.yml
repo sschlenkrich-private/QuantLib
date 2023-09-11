@@ -23,7 +23,7 @@ jobs:
             cxxflags: "-std=c++17"
             configureflags: --enable-std-classes --enable-std-optional
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup
       run: |
         brew install automake boost
